@@ -193,3 +193,107 @@ const defaultTeam = document.querySelector('.team_card.mercedes') || teamCards[0
 if (defaultTeam) {
     selectTeam(defaultTeam, true);
 }
+
+// ==========================================
+// STATS & BUDGET LOGIC
+// ==========================================
+const TOTAL_BUDGET = 25;
+let remainingBudget = TOTAL_BUDGET;
+
+const budgetDisplay = document.querySelector('.budget_display');
+const statsContainers = document.querySelectorAll('.stats_container');
+
+function updateStatsUI() {
+    // 1. Update budget badge text or show ready button
+    if (budgetDisplay) {
+        if (remainingBudget === 0) {
+            budgetDisplay.classList.add('ready');
+            budgetDisplay.innerHTML = `<a href="#circuit">SELECT CIRCUIT &rarr;</a>`;
+        } else {
+            budgetDisplay.classList.remove('ready');
+            budgetDisplay.innerHTML = `<h1>BUDGET: <span class="highlight">$${remainingBudget}M</span> / $${TOTAL_BUDGET}M</h1>`;
+        }
+    }
+
+    // 2. Update button states (disabled when at limits or out of budget)
+    statsContainers.forEach(container => {
+        const buttons = container.querySelectorAll('.stats_btn');
+        const bars = container.querySelectorAll('.stats_bar');
+
+        const d1Bar = bars[0];
+        const d2Bar = bars[1];
+
+        const d1Level = parseInt(d1Bar?.dataset.level || '0', 10);
+        const d2Level = parseInt(d2Bar?.dataset.level || '0', 10);
+
+        // Driver 1: buttons[0] = '+', buttons[1] = '-'
+        if (buttons[0]) buttons[0].disabled = (remainingBudget === 0 || d1Level >= 5);
+        if (buttons[1]) buttons[1].disabled = (d1Level <= 0);
+
+        // Driver 2: buttons[2] = '+', buttons[3] = '-'
+        if (buttons[2]) buttons[2].disabled = (remainingBudget === 0 || d2Level >= 5);
+        if (buttons[3]) buttons[3].disabled = (d2Level <= 0);
+    });
+}
+
+function modifyStat(bar, delta) {
+    if (!bar) return;
+    const currentLevel = parseInt(bar.dataset.level || '0', 10);
+    const targetLevel = currentLevel + delta;
+
+    // Check bounds: 0 to 5 bars
+    if (targetLevel < 0 || targetLevel > 5) return;
+
+    // If adding, ensure budget is available
+    if (delta > 0 && remainingBudget <= 0) return;
+
+    // Update state
+    bar.dataset.level = targetLevel;
+    bar.style.setProperty('--level', targetLevel);
+    remainingBudget -= delta;
+
+    updateStatsUI();
+}
+
+// Attach event listeners to all stat controllers
+statsContainers.forEach(container => {
+    const buttons = container.querySelectorAll('.stats_btn');
+    const bars = container.querySelectorAll('.stats_bar');
+
+    const d1Bar = bars[0];
+    const d2Bar = bars[1];
+
+    if (d1Bar) {
+        d1Bar.dataset.level = '0';
+        d1Bar.style.setProperty('--level', 0);
+    }
+    if (d2Bar) {
+        d2Bar.dataset.level = '0';
+        d2Bar.style.setProperty('--level', 0);
+    }
+
+    // Driver 1: [0] = +, [1] = -
+    if (buttons[0]) buttons[0].addEventListener('click', () => modifyStat(d1Bar, 1));
+    if (buttons[1]) buttons[1].addEventListener('click', () => modifyStat(d1Bar, -1));
+
+    // Driver 2: [2] = +, [3] = -
+    if (buttons[2]) buttons[2].addEventListener('click', () => modifyStat(d2Bar, 1));
+    if (buttons[3]) buttons[3].addEventListener('click', () => modifyStat(d2Bar, -1));
+});
+
+// Handle smooth scroll when "SELECT CIRCUIT" button is clicked
+if (budgetDisplay) {
+    budgetDisplay.addEventListener('click', (e) => {
+        const link = e.target.closest('a');
+        if (link && link.getAttribute('href') === '#circuit') {
+            const circuitSection = document.querySelector('#circuit');
+            if (circuitSection) {
+                e.preventDefault();
+                smoothScrollTo(circuitSection.offsetTop, 1000);
+            }
+        }
+    });
+}
+
+// Run initial UI state setup
+updateStatsUI();
