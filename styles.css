@@ -1,0 +1,650 @@
+/* SYSYEM */
+:root {
+    --black: #000000;
+    --white: #ffffff;
+    --red: #FF1801;
+    --dark_red: #b00000;
+    --light_red: #ff6767;
+    --petronas: #00A19B;
+    --ferrari: #FF2800;
+    --mclaren: #FF8000;
+    --red_bulls: #23326A;
+    --racing-bulls: #6692FF;
+    --alpine: #de637f;
+    --haas: #787878;
+
+    --regular: 400;
+    --black_bold: 900;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+
+    font-family: "Montserrat", sans-serif;
+    font-optical-sizing: auto;
+
+    transition: all 0.2s ease-in-out;
+}
+
+body {
+    background-color: var(--black);
+}
+
+/* NAVBAR */
+.navbar {
+    position: fixed;
+    width: 100%;
+    height: auto;
+    padding: 25px 40px;
+    display: flex;
+    align-items: center;
+    gap: 50px;
+
+    background-color: var(--black);
+    z-index: 2;
+}
+
+.navbar .nav_logo {
+    width: 60px;
+    height: auto;
+}
+
+.navbar a {
+    text-decoration: none;
+    color: var(--white);
+    font-weight: var(--regular);
+}
+
+.navbar a:hover,
+.navbar a.active {
+    cursor: pointer;
+    font-weight: var(--black_bold);
+}
+
+/* HERO */
+.hero {
+    height: 100vh;
+    background-image: linear-gradient(to bottom, var(--black), rgba(255, 255, 255, 0)), url("Assets/Global/Hero_BG.png");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.hero_container {
+    height: 100vh;
+    padding-top: 210px;
+
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+.hero_container h1 {
+    font-size: 5.5rem;
+
+    font-weight: var(--black_bold);
+    font-style: italic;
+    color: var(--white);
+    line-height: 5rem;
+}
+
+.hero_container h1 .paddock {
+    background: linear-gradient(90deg, var(--red), var(--dark_red), var(--light_red));
+    background-size: 200% auto;
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: paddockGradient 3s ease-in-out infinite;
+}
+
+@keyframes paddockGradient {
+    0% {
+        background-position: 0% center;
+    }
+
+    50% {
+        background-position: 100% center;
+    }
+
+    100% {
+        background-position: 0% center;
+    }
+}
+
+.hero_container h2 {
+    font-size: 1.25rem;
+
+    font-weight: var(--regular);
+    color: var(--white);
+}
+
+.button {
+    padding-top: 40px;
+    display: flex;
+    gap: 20px;
+}
+
+.button a {
+    display: inline-block;
+    text-decoration: none;
+
+    font-size: .75rem;
+    font-weight: var(--regular);
+    color: var(--white);
+
+    padding: 10px 40px;
+    border-radius: 50px;
+}
+
+.web {
+    border: 1px solid var(--white);
+}
+
+.web:hover {
+    cursor: pointer;
+    transform: translateY(-5px);
+    background-color: var(--white);
+    color: var(--black);
+}
+
+.start {
+    background-color: var(--red);
+}
+
+.start:hover {
+    cursor: pointer;
+    transform: translateY(-5px);
+    background-color: var(--dark_red);
+}
+
+/* ABOUT */
+.about {
+    height: auto;
+    padding: 90px 40px;
+    background: radial-gradient(circle at 50% 0%, rgba(255, 24, 1, 0.12) 0%, transparent 85%),
+        linear-gradient(180deg, #0d0d0d 0%, var(--black) 100%);
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 24px;
+}
+
+.about_badge {
+    color: var(--red);
+    font-size: 0.75rem;
+    font-weight: var(--black_bold);
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    padding: 6px 18px;
+    background: rgba(255, 24, 1, 0.08);
+    border: 1px solid rgba(255, 24, 1, 0.3);
+    border-radius: 50px;
+}
+
+.about p {
+    max-width: 820px;
+    font-size: 1.15rem;
+    font-weight: var(--regular);
+    color: rgba(255, 255, 255, 0.85);
+    line-height: 1.9;
+}
+
+.about p strong {
+    color: var(--white);
+    font-weight: var(--black_bold);
+}
+
+.about_steps {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 16px;
+    margin-top: 8px;
+}
+
+.about_steps .step {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 22px;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 50px;
+    transition: all 0.25s ease-in-out;
+    cursor: default;
+}
+
+.about_steps .step:hover {
+    border-color: var(--red);
+    background: rgba(255, 24, 1, 0.08);
+    transform: translateY(-3px);
+}
+
+.about_steps .step_num {
+    font-size: 0.75rem;
+    font-weight: var(--black_bold);
+    color: var(--red);
+}
+
+.about_steps .step_text {
+    font-size: 0.85rem;
+    font-weight: var(--black_bold);
+    color: var(--white);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.about_steps .step_arrow {
+    color: rgba(255, 255, 255, 0.3);
+    font-size: 1.1rem;
+    font-weight: var(--regular);
+    user-select: none;
+}
+
+/* GRID */
+.grid {
+    height: 100vh;
+    background-image: linear-gradient(to right, var(--black), rgba(255, 255, 255, 0)), url("Assets/Mercedes/Mercedes_BG.png");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.grid_container {
+    padding: 40px;
+    height: 100vh;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+/* TEAM SELECTION */
+.team_selection {
+    width: 30%;
+    display: flex;
+    flex-direction: column;
+}
+
+.team_card {
+    position: relative;
+    width: 100%;
+    padding: 10px 0 10px 30px;
+    cursor: pointer;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 20px;
+}
+
+.team_card>* {
+    position: relative;
+    z-index: 1;
+}
+
+.team_card.selected::before {
+    opacity: 1;
+}
+
+.team_card_text {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.team_card_text h1 {
+    font-size: 1.2rem;
+
+    color: var(--white);
+    text-transform: uppercase;
+    font-weight: var(--black_bold);
+}
+
+.team_card_text h2 {
+    font-size: 0.75rem;
+
+    color: var(--white);
+    text-transform: uppercase;
+    font-weight: var(--regular);
+}
+
+.team_card_text h2 span {
+    font-weight: var(--black_bold);
+}
+
+.team_card img {
+    width: 60px;
+    height: 60px;
+    aspect-ratio: 1 / 1;
+    object-fit: contain;
+    border-radius: 50%;
+    padding: 10px;
+    flex-shrink: 0;
+}
+
+/* MERCEDES */
+.team_card .mercedes_logo {
+    background: linear-gradient(to bottom, var(--petronas), var(--black));
+}
+
+.mercedes::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to right, var(--petronas), rgba(255, 255, 255, 0));
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out;
+    z-index: 0;
+}
+
+.mercedes:hover::before {
+    opacity: 1;
+}
+
+.mercedes h1 {
+    color: var(--white);
+}
+
+/* FERRARI */
+.team_card .ferrari_logo {
+    background: linear-gradient(to bottom, var(--ferrari), var(--black));
+}
+
+.ferrari::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to right, var(--ferrari), rgba(255, 255, 255, 0));
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out;
+    z-index: 0;
+}
+
+.ferrari:hover::before {
+    opacity: 1;
+}
+
+.ferrari h1 {
+    color: var(--white);
+}
+
+/* MCLAREN */
+.team_card .mclaren_logo {
+    background: linear-gradient(to bottom, var(--mclaren), var(--black));
+}
+
+.mclaren::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to right, var(--mclaren), rgba(255, 255, 255, 0));
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out;
+    z-index: 0;
+}
+
+.mclaren:hover::before {
+    opacity: 1;
+}
+
+.mclaren h1 {
+    color: var(--white);
+}
+
+/* RED BULLS */
+.team_card .red_bulls_logo {
+    background: linear-gradient(to bottom, var(--red_bulls), var(--black));
+}
+
+.red_bulls::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to right, var(--red_bulls), rgba(255, 255, 255, 0));
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out;
+    z-index: 0;
+}
+
+.red_bulls:hover::before {
+    opacity: 1;
+}
+
+.red_bulls h1 {
+    color: var(--white);
+}
+
+/* RACING BULLS */
+.team_card .racing_bulls_logo {
+    background: linear-gradient(to bottom, var(--racing-bulls), var(--red_bulls));
+}
+
+.racing_bulls::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to right, var(--racing-bulls), rgba(255, 255, 255, 0));
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out;
+    z-index: 0;
+}
+
+.racing_bulls:hover::before {
+    opacity: 1;
+}
+
+.racing_bulls h1 {
+    color: var(--white);
+}
+
+/* ALPINE */
+.team_card .alpine_logo {
+    background: linear-gradient(to bottom, var(--alpine), var(--black));
+}
+
+.alpine::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to right, var(--alpine), rgba(255, 255, 255, 0));
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out;
+    z-index: 0;
+}
+
+.alpine:hover::before {
+    opacity: 1;
+}
+
+.alpine h1 {
+    color: var(--white);
+}
+
+/* HAAS */
+.team_card .haas_logo {
+    background: linear-gradient(to bottom, var(--haas), var(--black));
+}
+
+.haas::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to right, var(--haas), rgba(255, 255, 255, 0));
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out;
+    z-index: 0;
+}
+
+.haas:hover::before {
+    opacity: 1;
+}
+
+.haas h1 {
+    color: var(--white);
+}
+
+/* TEAM NAME */
+.team_name {
+    height: 100%;
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: end;
+    justify-content: end;
+    gap: 10px;
+}
+
+.team_name h1 {
+    color: var(--white);
+    font-size: 5rem;
+    line-height: 3rem;
+    font-weight: var(--black_bold);
+    text-transform: uppercase;
+}
+
+.team_name h2 {
+    color: var(--white);
+    font-size: 1rem;
+    font-weight: var(--regular);
+    text-transform: uppercase;
+}
+
+.team_name h2 span {
+    font-weight: var(--black_bold);
+}
+
+.team_name a {
+    color: var(--white);
+    text-decoration: none;
+    font-size: 1rem;
+    font-weight: var(--black_bold);
+    text-transform: uppercase;
+    margin-top: 30px;
+    background-color: var(--petronas);
+    padding: 10px 20px;
+    border-radius: 50px;
+}
+
+.team_name a:hover {
+    cursor: pointer;
+    transform: translateY(-5px);
+    background-color: var(--white);
+    color: var(--black);
+}
+
+/* TRAINING */
+.training {
+    height: 100vh;
+    position: relative;
+    background-image:
+        radial-gradient(circle at 50% 45%, color-mix(in srgb, var(--petronas) 50%, transparent) 0%, rgba(0, 0, 0, 0.85) 70%),
+        url("Assets/Mercedes/Mercedes_Car.png");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    overflow: hidden;
+}
+
+.training_container {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    position: relative;
+    overflow: hidden;
+}
+
+/* DRIVERS' NAMES */
+.drivers_name {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 30px;
+    margin-top: 100px;
+}
+
+.drivers_name span {
+    font-weight: var(--black_bold);
+}
+
+.drivers_name hr {
+    border: none;
+    height: 2px;
+    background-color: var(--white);
+    width: 50%;
+    margin: 7px 0;
+}
+
+.driver_name1 {
+    display: flex;
+    flex-direction: column;
+    align-items: end;
+    justify-content: center;
+    width: 100%;
+}
+
+.driver_name2 {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    justify-content: center;
+    width: 100%;
+}
+
+.driver_name1 h1,
+.driver_name2 h1 {
+    color: var(--white);
+    font-size: 1.5rem;
+    font-weight: var(--regular);
+    text-transform: uppercase;
+    line-height: 1.5rem;
+}
+
+.driver_name1 h2,
+.driver_name2 h2 {
+    color: var(--white);
+    font-size: 0.75rem;
+    font-weight: var(--regular);
+    text-transform: uppercase;
+}
+
+.drivers_name img {
+    width: 50px;
+    object-fit: cover;
+}
+
+/* DRIVERS' STATS */
+.stats {
+    width: 50%;
+    height: 100%;
+}
+
+/* DRIVER IMAGE */
+.driver1,
+.driver2 {
+    position: relative;
+    width: 25%;
+    height: 100%;
+    overflow: hidden;
+}
+
+.driver1 img,
+.driver2 img {
+    position: absolute;
+    top: 20vh;
+    height: 175vh;
+    width: auto;
+    max-width: none;
+    left: 50%;
+    transform: translateX(-50%);
+    pointer-events: none;
+    user-select: none;
+}
