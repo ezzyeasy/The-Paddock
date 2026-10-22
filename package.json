@@ -1,0 +1,25 @@
+{
+  "name": "the-paddock",
+  "version": "1.0.0",
+  "description": "",
+  "main": "script.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "live-server"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ezzyeasy/The-Paddock.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/ezzyeasy/The-Paddock/issues"
+  },
+  "homepage": "https://github.com/ezzyeasy/The-Paddock#readme",
+  "devDependencies": {
+    "live-server": "^1.2.2"
+  }
+}
