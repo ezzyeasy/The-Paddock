@@ -79,7 +79,9 @@ sections.forEach(section => observer.observe(section));
 
 // TEAM SELECTION IN GRID
 const teamCards = document.querySelectorAll('.team_card');
-const gridSection = document.querySelector('.grid');
+const gridBgActive = document.querySelector('.grid_bg_active');
+const gridBgNext = document.querySelector('.grid_bg_next');
+const teamNameBox = document.querySelector('.team_name');
 const teamNameH1 = document.querySelector('.team_name h1');
 const teamNameH2 = document.querySelector('.team_name h2');
 const teamNameBtn = document.querySelector('.team_name a');
@@ -115,12 +117,10 @@ const teamDetails = {
     }
 };
 
-function selectTeam(card) {
-    // 1. Highlight selected team card on the left
-    teamCards.forEach(c => c.classList.remove('selected'));
-    card.classList.add('selected');
+let currentSelectedKey = '';
 
-    // 2. Identify selected team key from classes
+function selectTeam(card, isInitial = false) {
+    // Identify selected team key from classes
     let selectedKey = '';
     for (const key of Object.keys(teamDetails)) {
         if (card.classList.contains(key)) {
@@ -129,28 +129,57 @@ function selectTeam(card) {
         }
     }
 
-    const teamInfo = teamDetails[selectedKey] || {};
+    // Ignore click if this team is already active
+    if (!selectedKey || (!isInitial && selectedKey === currentSelectedKey)) return;
+    currentSelectedKey = selectedKey;
 
-    // 3. Update the background of the grid section
-    if (gridSection && teamInfo.bg) {
-        gridSection.style.backgroundImage = `linear-gradient(to right, var(--black), rgba(255, 255, 255, 0)), url("${teamInfo.bg}")`;
+    // 1. Highlight selected team card on the left
+    teamCards.forEach(c => c.classList.remove('selected'));
+    card.classList.add('selected');
+
+    const teamInfo = teamDetails[selectedKey] || {};
+    const newBg = `linear-gradient(to right, var(--black), rgba(255, 255, 255, 0)), url("${teamInfo.bg}")`;
+
+    // 2. Smooth ease-in-out crossfade for background image
+    if (gridBgActive && gridBgNext && teamInfo.bg) {
+        if (isInitial) {
+            gridBgActive.style.backgroundImage = newBg;
+            gridBgNext.style.opacity = '0';
+        } else {
+            // Set new image on next layer and fade it in
+            gridBgNext.style.backgroundImage = newBg;
+            gridBgNext.style.opacity = '1';
+
+            // Once crossfade finishes, transfer to active layer and reset next layer
+            setTimeout(() => {
+                gridBgActive.style.backgroundImage = newBg;
+                gridBgNext.style.opacity = '0';
+            }, 600);
+        }
     }
 
-    // 4. Update team name, drivers, and choose button
+    // 3. Smooth ease-in-out fade transition for team name & driver details
     const cardTitle = card.querySelector('h1')?.textContent.trim() || '';
     const cardDriversHTML = card.querySelector('h2')?.innerHTML.trim() || '';
 
-    if (teamNameH1) {
-        teamNameH1.textContent = cardTitle;
-    }
-    if (teamNameH2) {
-        teamNameH2.innerHTML = cardDriversHTML;
-    }
-    if (teamNameBtn) {
-        teamNameBtn.textContent = `CHOOSE ${cardTitle.toUpperCase()}`;
-        if (teamInfo.color) {
-            teamNameBtn.style.backgroundColor = teamInfo.color;
+    if (isInitial) {
+        if (teamNameH1) teamNameH1.textContent = cardTitle;
+        if (teamNameH2) teamNameH2.innerHTML = cardDriversHTML;
+        if (teamNameBtn) {
+            teamNameBtn.textContent = `CHOOSE ${cardTitle.toUpperCase()}`;
+            if (teamInfo.color) teamNameBtn.style.backgroundColor = teamInfo.color;
         }
+    } else if (teamNameBox) {
+        teamNameBox.classList.add('fade_out');
+        setTimeout(() => {
+            if (teamNameH1) teamNameH1.textContent = cardTitle;
+            if (teamNameH2) teamNameH2.innerHTML = cardDriversHTML;
+            if (teamNameBtn) {
+                teamNameBtn.textContent = `CHOOSE ${cardTitle.toUpperCase()}`;
+                if (teamInfo.color) teamNameBtn.style.backgroundColor = teamInfo.color;
+            }
+            teamNameBox.classList.remove('fade_out');
+        }, 250);
     }
 }
 
@@ -159,8 +188,8 @@ teamCards.forEach(card => {
     card.addEventListener('click', () => selectTeam(card));
 });
 
-// Default to Mercedes (the first team card)
+// Default to Mercedes (the first team card) on load
 const defaultTeam = document.querySelector('.team_card.mercedes') || teamCards[0];
 if (defaultTeam) {
-    selectTeam(defaultTeam);
+    selectTeam(defaultTeam, true);
 }
