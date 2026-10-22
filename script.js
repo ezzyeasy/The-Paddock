@@ -201,6 +201,7 @@ const TOTAL_BUDGET = 25;
 let remainingBudget = TOTAL_BUDGET;
 
 const budgetDisplay = document.querySelector('.budget_display');
+const resetBtn = document.querySelector('#resetBtn');
 const statsContainers = document.querySelectorAll('.stats_container');
 
 function updateStatsUI() {
@@ -215,7 +216,12 @@ function updateStatsUI() {
         }
     }
 
-    // 2. Update button states (disabled when at limits or out of budget)
+    // 2. Update reset button state
+    if (resetBtn) {
+        resetBtn.disabled = (remainingBudget === TOTAL_BUDGET);
+    }
+
+    // 3. Update button states (disabled when at limits or out of budget)
     statsContainers.forEach(container => {
         const buttons = container.querySelectorAll('.stats_btn');
         const bars = container.querySelectorAll('.stats_bar');
@@ -227,8 +233,8 @@ function updateStatsUI() {
         const d2Level = parseInt(d2Bar?.dataset.level || '0', 10);
 
         // Driver 1: buttons[0] = '+', buttons[1] = '-'
-        if (buttons[0]) buttons[0].disabled = (remainingBudget === 0 || d1Level >= 5);
-        if (buttons[1]) buttons[1].disabled = (d1Level <= 0);
+        if (buttons[1]) buttons[1].disabled = (remainingBudget === 0 || d1Level >= 5);
+        if (buttons[0]) buttons[0].disabled = (d1Level <= 0);
 
         // Driver 2: buttons[2] = '+', buttons[3] = '-'
         if (buttons[2]) buttons[2].disabled = (remainingBudget === 0 || d2Level >= 5);
@@ -273,8 +279,8 @@ statsContainers.forEach(container => {
     }
 
     // Driver 1: [0] = +, [1] = -
-    if (buttons[0]) buttons[0].addEventListener('click', () => modifyStat(d1Bar, 1));
-    if (buttons[1]) buttons[1].addEventListener('click', () => modifyStat(d1Bar, -1));
+    if (buttons[1]) buttons[1].addEventListener('click', () => modifyStat(d1Bar, 1));
+    if (buttons[0]) buttons[0].addEventListener('click', () => modifyStat(d1Bar, -1));
 
     // Driver 2: [2] = +, [3] = -
     if (buttons[2]) buttons[2].addEventListener('click', () => modifyStat(d2Bar, 1));
@@ -292,6 +298,21 @@ if (budgetDisplay) {
                 smoothScrollTo(circuitSection.offsetTop, 1000);
             }
         }
+    });
+}
+
+// Reset button click handler
+if (resetBtn) {
+    resetBtn.addEventListener('click', () => {
+        remainingBudget = TOTAL_BUDGET;
+        statsContainers.forEach(container => {
+            const bars = container.querySelectorAll('.stats_bar');
+            bars.forEach(bar => {
+                bar.dataset.level = '0';
+                bar.style.setProperty('--level', 0);
+            });
+        });
+        updateStatsUI();
     });
 }
 

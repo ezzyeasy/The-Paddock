@@ -617,7 +617,7 @@ body {
     align-items: center;
     justify-content: center;
     gap: 30px;
-    margin-top: 150px;
+    margin-top: 130px;
 }
 
 .drivers_name span {
@@ -703,12 +703,58 @@ body {
 }
 
 .stats_display {
-    height: 70vh;
+    height: 73vh;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: end;
     gap: 30px;
+}
+
+.budget_row {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+}
+
+.reset_btn {
+    height: 38px;
+    padding: 0 18px;
+    border-radius: 50px;
+    background-color: var(--black);
+    color: var(--white);
+    border: 2px solid var(--black);
+    box-shadow: 0 0 0 1.5px rgba(255, 255, 255, 0.4);
+    font-size: 0.85rem;
+    font-weight: var(--black_bold);
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    user-select: none;
+    transition: all 0.2s ease-in-out;
+}
+
+.reset_btn:hover:not(:disabled) {
+    background-color: var(--white);
+    color: var(--black);
+    box-shadow: 0 0 0 1.5px var(--red), 0 0 12px rgba(255, 24, 1, 0.5);
+    transform: scale(1.05);
+}
+
+.reset_btn:active:not(:disabled) {
+    transform: scale(0.95);
+}
+
+.reset_btn:disabled {
+    opacity: 0.25;
+    cursor: not-allowed;
+    pointer-events: none;
+    box-shadow: 0 0 0 1.5px rgba(255, 255, 255, 0.15);
 }
 
 .budget_display {
