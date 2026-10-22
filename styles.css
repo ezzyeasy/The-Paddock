@@ -591,12 +591,13 @@ body {
     height: 100vh;
     position: relative;
     background-image:
-        radial-gradient(circle at 50% 45%, color-mix(in srgb, var(--petronas) 50%, transparent) 0%, rgba(0, 0, 0, 0.85) 70%),
+        radial-gradient(circle at 50% 45%, color-mix(in srgb, var(--team-color, var(--petronas)) 50%, transparent) 0%, rgba(0, 0, 0, 0.85) 70%),
         url("Assets/Mercedes/Mercedes_Car.png");
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
     overflow: hidden;
+    transition: background-image 0.4s ease-in-out;
 }
 
 .training_container {
@@ -616,8 +617,9 @@ body {
     flex-direction: row;
     align-items: center;
     justify-content: center;
-    gap: 30px;
+    gap: 25px;
     margin-top: 130px;
+    transition: opacity 0.25s ease-in-out;
 }
 
 .drivers_name span {
@@ -627,9 +629,10 @@ body {
 .drivers_name hr {
     border: none;
     height: 2px;
-    background-color: var(--white);
+    background-color: var(--team-color, var(--white));
     width: 50%;
     margin: 7px 0;
+    transition: background-color 0.4s ease-in-out;
 }
 
 .driver_name1 {
@@ -651,10 +654,11 @@ body {
 .driver_name1 h1,
 .driver_name2 h1 {
     color: var(--white);
-    font-size: 1.5rem;
+    font-size: 1.35rem;
     font-weight: var(--regular);
     text-transform: uppercase;
     line-height: 1.5rem;
+    white-space: nowrap;
 }
 
 .driver_name1 h2,
@@ -700,6 +704,7 @@ body {
     transform: translateX(-50%);
     pointer-events: none;
     user-select: none;
+    transition: opacity 0.25s ease-in-out;
 }
 
 .stats_display {
@@ -719,6 +724,7 @@ body {
     gap: 15px;
 }
 
+.random_btn,
 .reset_btn {
     height: 38px;
     padding: 0 18px;
@@ -739,6 +745,7 @@ body {
     transition: all 0.2s ease-in-out;
 }
 
+.random_btn:hover:not(:disabled),
 .reset_btn:hover:not(:disabled) {
     background-color: var(--white);
     color: var(--black);
@@ -746,10 +753,12 @@ body {
     transform: scale(1.05);
 }
 
+.random_btn:active:not(:disabled),
 .reset_btn:active:not(:disabled) {
     transform: scale(0.95);
 }
 
+.random_btn:disabled,
 .reset_btn:disabled {
     opacity: 0.25;
     cursor: not-allowed;
