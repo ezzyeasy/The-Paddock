@@ -798,8 +798,14 @@ function selectCircuit(card, isInitial = false) {
     circuitCards.forEach(c => c.classList.remove('active'));
     card.classList.add('active');
 
-    // Scroll active card into view within the horizontal container
-    card.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+    // Scroll active card into view within the horizontal container only (prevents vertical page jump)
+    if (circuitCarouselContainer) {
+        const scrollLeftTarget = card.offsetLeft - (circuitCarouselContainer.clientWidth / 2) + (card.clientWidth / 2);
+        circuitCarouselContainer.scrollTo({
+            left: scrollLeftTarget,
+            behavior: isInitial ? 'auto' : 'smooth'
+        });
+    }
 
     // 2. Smooth crossfade background
     if (circuitBgActive && circuitBgNext && info.bg) {
@@ -2092,6 +2098,7 @@ function initPageAndRace() {
     }
     setupRaceCircuit('sepang');
     updateRaceUserTeam(currentSelectedKey || 'mercedes');
+    window.scrollTo(0, 0);
 }
 
 if (document.readyState === 'loading') {
