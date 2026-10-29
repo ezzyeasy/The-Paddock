@@ -2119,7 +2119,7 @@ body {
     position: absolute;
     inset: 0;
     background: radial-gradient(circle at 50% 50%, rgba(6, 9, 14, 0.25) 0%, rgba(6, 9, 14, 0.92) 100%),
-                linear-gradient(to bottom, rgba(6, 9, 14, 0.85) 0%, transparent 20%, transparent 80%, rgba(6, 9, 14, 0.95) 100%);
+        linear-gradient(to bottom, rgba(6, 9, 14, 0.85) 0%, transparent 20%, transparent 80%, rgba(6, 9, 14, 0.95) 100%);
     pointer-events: none;
     z-index: 2;
 }
@@ -2178,8 +2178,17 @@ body {
 }
 
 @keyframes livePulse {
-    0%, 100% { opacity: 1; transform: scale(1); }
-    50% { opacity: 0.4; transform: scale(0.85); }
+
+    0%,
+    100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+
+    50% {
+        opacity: 0.4;
+        transform: scale(0.85);
+    }
 }
 
 /* LAP COUNT SELECTOR (3, 5, 7) */
@@ -2445,7 +2454,7 @@ body {
     left: 0;
     top: 14px;
     bottom: 14px;
-    width: 275px;
+    width: 215px;
     background: rgba(10, 14, 22, 0.88);
     backdrop-filter: blur(18px);
     -webkit-backdrop-filter: blur(18px);
@@ -2570,9 +2579,17 @@ body {
     color: #9aa2ae;
 }
 
-.tower_row:nth-child(1) .row_pos { color: #ffd700; }
-.tower_row:nth-child(2) .row_pos { color: #e0e0e0; }
-.tower_row:nth-child(3) .row_pos { color: #cd7f32; }
+.tower_row:nth-child(1) .row_pos {
+    color: #ffd700;
+}
+
+.tower_row:nth-child(2) .row_pos {
+    color: #e0e0e0;
+}
+
+.tower_row:nth-child(3) .row_pos {
+    color: #cd7f32;
+}
 
 .row_team_bar {
     width: 3px;
@@ -2616,9 +2633,20 @@ body {
     margin-left: 4px;
 }
 
-.row_tyre.tyre_s { background: #FF1801; color: #ffffff; }
-.row_tyre.tyre_m { background: #FFD700; color: #000000; }
-.row_tyre.tyre_h { background: #FFFFFF; color: #000000; }
+.row_tyre.tyre_s {
+    background: #FF1801;
+    color: #ffffff;
+}
+
+.row_tyre.tyre_m {
+    background: #FFD700;
+    color: #000000;
+}
+
+.row_tyre.tyre_h {
+    background: #FFFFFF;
+    color: #000000;
+}
 
 /* CENTER: TRACK SVG CANVAS */
 .race_track_container {
@@ -2710,8 +2738,13 @@ body {
 }
 
 @keyframes overtakePulse {
-    from { r: 13.5; }
-    to { r: 16.5; }
+    from {
+        r: 13.5;
+    }
+
+    to {
+        r: 16.5;
+    }
 }
 
 /* TOP RIGHT: COMMENTARY FEED */
@@ -2754,6 +2787,7 @@ body {
         opacity: 0;
         transform: translateX(20px);
     }
+
     to {
         opacity: 1;
         transform: translateX(0);
@@ -2793,7 +2827,7 @@ body {
     position: absolute;
     inset: 0;
     background: radial-gradient(circle at 50% 40%, rgba(6, 9, 14, 0.3) 0%, rgba(6, 9, 14, 0.95) 100%),
-                linear-gradient(to bottom, rgba(6, 9, 14, 0.9) 0%, transparent 20%, transparent 80%, rgba(6, 9, 14, 0.98) 100%);
+        linear-gradient(to bottom, rgba(6, 9, 14, 0.9) 0%, transparent 20%, transparent 80%, rgba(6, 9, 14, 0.98) 100%);
     pointer-events: none;
     z-index: 2;
 }
@@ -2875,8 +2909,18 @@ body {
 }
 
 @keyframes lockedTrophyPulse {
-    0%, 100% { transform: scale(1); opacity: 0.85; }
-    50% { transform: scale(1.08); opacity: 1; filter: drop-shadow(0 0 35px rgba(255, 215, 0, 0.8)); }
+
+    0%,
+    100% {
+        transform: scale(1);
+        opacity: 0.85;
+    }
+
+    50% {
+        transform: scale(1.08);
+        opacity: 1;
+        filter: drop-shadow(0 0 35px rgba(255, 215, 0, 0.8));
+    }
 }
 
 .locked_title {
@@ -2955,8 +2999,15 @@ body {
 }
 
 @keyframes crownFloat {
-    0%, 100% { transform: translateY(0); }
-    50% { transform: translateY(-8px); }
+
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-8px);
+    }
 }
 
 .podium_driver_avatar {
@@ -3428,7 +3479,7 @@ body {
 .cinematic_footer {
     position: relative;
     width: 100%;
-    min-height: clamp(820px, 92vh, 1100px);
+    min-height: clamp(620px, 92vh, 800px);
     background-color: #040609;
     color: #ffffff;
     overflow: hidden;
@@ -3458,15 +3509,19 @@ body {
     0% {
         transform: scale(1) translate(0, 0);
     }
+
     25% {
         transform: scale(1.08) translate(-38px, -16px);
     }
+
     50% {
         transform: scale(1.13) translate(-55px, -8px);
     }
+
     75% {
         transform: scale(1.07) translate(-24px, 14px);
     }
+
     100% {
         transform: scale(1.1) translate(-10px, 6px);
     }
@@ -3476,7 +3531,7 @@ body {
     position: absolute;
     inset: 0;
     background: linear-gradient(to right, #040609 0%, rgba(4, 6, 9, 0.97) 32%, rgba(4, 6, 9, 0.55) 60%, rgba(4, 6, 9, 0.08) 82%, transparent 100%),
-                linear-gradient(to bottom, #06090e 0%, transparent 18%, transparent 75%, #030406 100%);
+        linear-gradient(to bottom, #06090e 0%, transparent 18%, transparent 75%, #030406 100%);
     z-index: 2;
     pointer-events: none;
 }
@@ -3485,7 +3540,7 @@ body {
     position: absolute;
     inset: 0;
     background: radial-gradient(ellipse at 78% 68%, rgba(255, 80, 0, 0.28) 0%, transparent 52%),
-                radial-gradient(ellipse at 15% 25%, rgba(255, 24, 1, 0.18) 0%, transparent 58%);
+        radial-gradient(ellipse at 15% 25%, rgba(255, 24, 1, 0.18) 0%, transparent 58%);
     z-index: 3;
     pointer-events: none;
 }
@@ -3511,30 +3566,197 @@ body {
 }
 
 /* Varied spark particles */
-.spark.s1  { width: 4px; height: 4px; right: 26%; bottom: 24%; animation: sparkFlyStreak 1.2s cubic-bezier(0.1, 0.8, 0.2, 1) infinite 0.1s; }
-.spark.s2  { width: 5px; height: 5px; right: 28%; bottom: 22%; animation: sparkFlyStreak 1.5s cubic-bezier(0.1, 0.8, 0.2, 1) infinite 0.4s; }
-.spark.s3  { width: 3px; height: 3px; right: 25%; bottom: 27%; animation: sparkFlyFast 1.1s ease-out infinite 0.7s; }
-.spark.s4  { width: 4px; height: 4px; right: 30%; bottom: 25%; animation: sparkFlyStreak 1.4s cubic-bezier(0.1, 0.8, 0.2, 1) infinite 0.2s; }
-.spark.s5  { width: 6px; height: 6px; right: 24%; bottom: 21%; animation: sparkFlyStreak 1.6s cubic-bezier(0.1, 0.8, 0.2, 1) infinite 0.5s; }
-.spark.s6  { width: 3px; height: 3px; right: 32%; bottom: 28%; animation: sparkTurbulent 2.0s ease-out infinite 0.9s; }
-.spark.s7  { width: 4px; height: 4px; right: 27%; bottom: 23%; animation: sparkFlyFast 1.3s ease-out infinite 1.1s; }
-.spark.s8  { width: 3px; height: 3px; right: 34%; bottom: 30%; animation: sparkTurbulent 1.9s ease-out infinite 0.6s; }
-.spark.s9  { width: 5px; height: 5px; right: 29%; bottom: 26%; animation: sparkFlyStreak 1.3s cubic-bezier(0.1, 0.8, 0.2, 1) infinite 1.3s; }
-.spark.s10 { width: 4px; height: 4px; right: 22%; bottom: 20%; animation: sparkFlyFast 1.2s ease-out infinite 0.3s; }
-.spark.s11 { width: 3px; height: 3px; right: 36%; bottom: 32%; animation: sparkTurbulent 2.2s ease-out infinite 0.8s; }
-.spark.s12 { width: 5px; height: 5px; right: 31%; bottom: 24%; animation: sparkFlyStreak 1.5s cubic-bezier(0.1, 0.8, 0.2, 1) infinite 0.15s; }
-.spark.s13 { width: 4px; height: 4px; right: 27%; bottom: 21%; animation: sparkFlyStreak 1.0s cubic-bezier(0.1, 0.8, 0.2, 1) infinite 0.75s; }
-.spark.s14 { width: 3px; height: 3px; right: 29%; bottom: 23%; animation: sparkFlyFast 1.4s ease-out infinite 1.0s; }
-.spark.s15 { width: 6px; height: 6px; right: 25%; bottom: 22%; animation: sparkFlyStreak 1.7s cubic-bezier(0.1, 0.8, 0.2, 1) infinite 0.35s; }
-.spark.s16 { width: 3px; height: 3px; right: 33%; bottom: 29%; animation: sparkTurbulent 2.4s ease-out infinite 1.2s; }
-.spark.s17 { width: 4px; height: 4px; right: 28%; bottom: 25%; animation: sparkFlyFast 1.3s ease-out infinite 0.45s; }
-.spark.s18 { width: 5px; height: 5px; right: 23%; bottom: 19%; animation: sparkFlyStreak 1.1s cubic-bezier(0.1, 0.8, 0.2, 1) infinite 0.65s; }
-.spark.s19 { width: 3px; height: 3px; right: 35%; bottom: 31%; animation: sparkTurbulent 1.8s ease-out infinite 1.4s; }
-.spark.s20 { width: 4px; height: 4px; right: 30%; bottom: 24%; animation: sparkFlyFast 1.25s ease-out infinite 0.85s; }
-.spark.s21 { width: 6px; height: 6px; right: 26%; bottom: 20%; animation: sparkFlyStreak 1.45s cubic-bezier(0.1, 0.8, 0.2, 1) infinite 0.25s; }
-.spark.s22 { width: 3px; height: 3px; right: 38%; bottom: 34%; animation: sparkTurbulent 2.1s ease-out infinite 1.05s; }
-.spark.s23 { width: 4px; height: 4px; right: 31%; bottom: 26%; animation: sparkFlyFast 1.35s ease-out infinite 0.55s; }
-.spark.s24 { width: 5px; height: 5px; right: 24%; bottom: 22%; animation: sparkFlyStreak 1.15s cubic-bezier(0.1, 0.8, 0.2, 1) infinite 0.95s; }
+.spark.s1 {
+    width: 4px;
+    height: 4px;
+    right: 26%;
+    bottom: 24%;
+    animation: sparkFlyStreak 1.2s cubic-bezier(0.1, 0.8, 0.2, 1) infinite 0.1s;
+}
+
+.spark.s2 {
+    width: 5px;
+    height: 5px;
+    right: 28%;
+    bottom: 22%;
+    animation: sparkFlyStreak 1.5s cubic-bezier(0.1, 0.8, 0.2, 1) infinite 0.4s;
+}
+
+.spark.s3 {
+    width: 3px;
+    height: 3px;
+    right: 25%;
+    bottom: 27%;
+    animation: sparkFlyFast 1.1s ease-out infinite 0.7s;
+}
+
+.spark.s4 {
+    width: 4px;
+    height: 4px;
+    right: 30%;
+    bottom: 25%;
+    animation: sparkFlyStreak 1.4s cubic-bezier(0.1, 0.8, 0.2, 1) infinite 0.2s;
+}
+
+.spark.s5 {
+    width: 6px;
+    height: 6px;
+    right: 24%;
+    bottom: 21%;
+    animation: sparkFlyStreak 1.6s cubic-bezier(0.1, 0.8, 0.2, 1) infinite 0.5s;
+}
+
+.spark.s6 {
+    width: 3px;
+    height: 3px;
+    right: 32%;
+    bottom: 28%;
+    animation: sparkTurbulent 2.0s ease-out infinite 0.9s;
+}
+
+.spark.s7 {
+    width: 4px;
+    height: 4px;
+    right: 27%;
+    bottom: 23%;
+    animation: sparkFlyFast 1.3s ease-out infinite 1.1s;
+}
+
+.spark.s8 {
+    width: 3px;
+    height: 3px;
+    right: 34%;
+    bottom: 30%;
+    animation: sparkTurbulent 1.9s ease-out infinite 0.6s;
+}
+
+.spark.s9 {
+    width: 5px;
+    height: 5px;
+    right: 29%;
+    bottom: 26%;
+    animation: sparkFlyStreak 1.3s cubic-bezier(0.1, 0.8, 0.2, 1) infinite 1.3s;
+}
+
+.spark.s10 {
+    width: 4px;
+    height: 4px;
+    right: 22%;
+    bottom: 20%;
+    animation: sparkFlyFast 1.2s ease-out infinite 0.3s;
+}
+
+.spark.s11 {
+    width: 3px;
+    height: 3px;
+    right: 36%;
+    bottom: 32%;
+    animation: sparkTurbulent 2.2s ease-out infinite 0.8s;
+}
+
+.spark.s12 {
+    width: 5px;
+    height: 5px;
+    right: 31%;
+    bottom: 24%;
+    animation: sparkFlyStreak 1.5s cubic-bezier(0.1, 0.8, 0.2, 1) infinite 0.15s;
+}
+
+.spark.s13 {
+    width: 4px;
+    height: 4px;
+    right: 27%;
+    bottom: 21%;
+    animation: sparkFlyStreak 1.0s cubic-bezier(0.1, 0.8, 0.2, 1) infinite 0.75s;
+}
+
+.spark.s14 {
+    width: 3px;
+    height: 3px;
+    right: 29%;
+    bottom: 23%;
+    animation: sparkFlyFast 1.4s ease-out infinite 1.0s;
+}
+
+.spark.s15 {
+    width: 6px;
+    height: 6px;
+    right: 25%;
+    bottom: 22%;
+    animation: sparkFlyStreak 1.7s cubic-bezier(0.1, 0.8, 0.2, 1) infinite 0.35s;
+}
+
+.spark.s16 {
+    width: 3px;
+    height: 3px;
+    right: 33%;
+    bottom: 29%;
+    animation: sparkTurbulent 2.4s ease-out infinite 1.2s;
+}
+
+.spark.s17 {
+    width: 4px;
+    height: 4px;
+    right: 28%;
+    bottom: 25%;
+    animation: sparkFlyFast 1.3s ease-out infinite 0.45s;
+}
+
+.spark.s18 {
+    width: 5px;
+    height: 5px;
+    right: 23%;
+    bottom: 19%;
+    animation: sparkFlyStreak 1.1s cubic-bezier(0.1, 0.8, 0.2, 1) infinite 0.65s;
+}
+
+.spark.s19 {
+    width: 3px;
+    height: 3px;
+    right: 35%;
+    bottom: 31%;
+    animation: sparkTurbulent 1.8s ease-out infinite 1.4s;
+}
+
+.spark.s20 {
+    width: 4px;
+    height: 4px;
+    right: 30%;
+    bottom: 24%;
+    animation: sparkFlyFast 1.25s ease-out infinite 0.85s;
+}
+
+.spark.s21 {
+    width: 6px;
+    height: 6px;
+    right: 26%;
+    bottom: 20%;
+    animation: sparkFlyStreak 1.45s cubic-bezier(0.1, 0.8, 0.2, 1) infinite 0.25s;
+}
+
+.spark.s22 {
+    width: 3px;
+    height: 3px;
+    right: 38%;
+    bottom: 34%;
+    animation: sparkTurbulent 2.1s ease-out infinite 1.05s;
+}
+
+.spark.s23 {
+    width: 4px;
+    height: 4px;
+    right: 31%;
+    bottom: 26%;
+    animation: sparkFlyFast 1.35s ease-out infinite 0.55s;
+}
+
+.spark.s24 {
+    width: 5px;
+    height: 5px;
+    right: 24%;
+    bottom: 22%;
+    animation: sparkFlyStreak 1.15s cubic-bezier(0.1, 0.8, 0.2, 1) infinite 0.95s;
+}
 
 /* Exaggerated spark flight animations with high-velocity streaks */
 @keyframes sparkFlyStreak {
@@ -3542,13 +3764,16 @@ body {
         transform: translate(0, 0) scale(1) scaleX(1);
         opacity: 0;
     }
+
     12% {
         opacity: 1;
         transform: translate(-30px, -10px) scale(1.6) scaleX(3.5);
     }
+
     70% {
         opacity: 0.9;
     }
+
     100% {
         transform: translate(-340px, -95px) scale(0.2) scaleX(5);
         opacity: 0;
@@ -3560,13 +3785,16 @@ body {
         transform: translate(0, 0) scale(1);
         opacity: 0;
     }
+
     15% {
         opacity: 1;
         transform: translate(-40px, -20px) scale(1.4);
     }
+
     75% {
         opacity: 0.8;
     }
+
     100% {
         transform: translate(-280px, -120px) scale(0.2);
         opacity: 0;
@@ -3578,103 +3806,18 @@ body {
         transform: translate(0, 0) scale(1);
         opacity: 0;
     }
+
     20% {
         opacity: 0.95;
     }
+
     50% {
         transform: translate(-130px, -60px) scale(1.2);
     }
+
     100% {
         transform: translate(-240px, -150px) scale(0.15);
         opacity: 0;
-    }
-}
-
-/* TITANIUM SKID FLASH (UNDERBODY IMPACT) */
-.skid_block_flash {
-    position: absolute;
-    right: 24%;
-    bottom: 21%;
-    width: 220px;
-    height: 100px;
-    background: radial-gradient(ellipse at center, rgba(255, 255, 255, 0.95) 0%, rgba(255, 210, 80, 0.75) 25%, rgba(255, 70, 0, 0.45) 55%, transparent 75%);
-    mix-blend-mode: screen;
-    animation: skidBlockStrobe 2.8s cubic-bezier(0.1, 0.9, 0.2, 1) infinite;
-    pointer-events: none;
-}
-
-@keyframes skidBlockStrobe {
-    0%, 16%, 24%, 58%, 68%, 100% {
-        opacity: 0;
-        transform: scale(0.4);
-    }
-    18%, 22% {
-        opacity: 1;
-        transform: scale(1.5) translate(-35px, -12px);
-    }
-    60%, 64% {
-        opacity: 0.85;
-        transform: scale(1.3) translate(-25px, -8px);
-    }
-}
-
-/* EXAGGERATED BRAKE ROTOR HEAT GLOW */
-.brake_heat_glow {
-    position: absolute;
-    right: 21%;
-    bottom: 18%;
-    width: 260px;
-    height: 260px;
-    border-radius: 50%;
-    background: radial-gradient(circle, rgba(255, 60, 0, 0.7) 0%, rgba(255, 130, 0, 0.35) 45%, transparent 75%);
-    mix-blend-mode: screen;
-    animation: brakeHeatGlow 2s ease-in-out infinite alternate;
-    pointer-events: none;
-}
-
-@keyframes brakeHeatGlow {
-    0% {
-        transform: scale(0.85);
-        opacity: 0.55;
-        filter: blur(8px);
-    }
-    50% {
-        transform: scale(1.3);
-        opacity: 1;
-        filter: blur(18px);
-    }
-    100% {
-        transform: scale(1.1);
-        opacity: 0.75;
-        filter: blur(12px);
-    }
-}
-
-/* EXAGGERATED SPEED LIGHT TRAILS */
-.light_trail_glow {
-    position: absolute;
-    right: 12%;
-    top: 32%;
-    width: 480px;
-    height: 180px;
-    background: radial-gradient(ellipse at center, rgba(0, 240, 255, 0.25) 0%, rgba(255, 20, 0, 0.28) 48%, transparent 80%);
-    mix-blend-mode: screen;
-    animation: trailShimmer 3s ease-in-out infinite alternate;
-    pointer-events: none;
-}
-
-@keyframes trailShimmer {
-    0% {
-        opacity: 0.45;
-        transform: scaleY(0.85) translateX(0);
-    }
-    50% {
-        opacity: 1;
-        transform: scaleY(1.25) translateX(-25px);
-    }
-    100% {
-        opacity: 0.65;
-        transform: scaleY(1.05) translateX(10px);
     }
 }
 
@@ -3696,7 +3839,7 @@ body {
 
 .footer_left_pane {
     width: 100%;
-    max-width: 540px;
+    max-width: 700px;
     display: flex;
     flex-direction: column;
 }
@@ -3828,7 +3971,7 @@ body {
     display: flex;
     align-items: flex-start;
     justify-content: space-between;
-    max-width: 480px;
+    max-width: 600px;
     gap: 20px;
 }
 
@@ -3839,7 +3982,7 @@ body {
 }
 
 .footer_reserved {
-    font-size: 0.74rem;
+    font-size: 0.7rem;
     font-weight: 800;
     letter-spacing: 2px;
     color: rgba(255, 255, 255, 0.85);
@@ -3874,6 +4017,7 @@ body {
     font-family: inherit;
     backdrop-filter: blur(8px);
     -webkit-backdrop-filter: blur(8px);
+    width: 150px;
 }
 
 .footer_back_top_btn:hover {

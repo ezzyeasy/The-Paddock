@@ -1,0 +1,4 @@
+Block the user to continue the race if they didn't complete the team building
+Information on each training skills, Car tuning, etc (Maybe use hover or small Information button)
+Fix some track, racing it went beyond the screen
+Remove unncessary UI (Under title, etc)

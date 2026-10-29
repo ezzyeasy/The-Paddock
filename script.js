@@ -1080,14 +1080,14 @@ commentaryAudio.addEventListener('timeupdate', () => {
     if (commentaryAudio.duration && commentaryAudio.currentTime >= commentaryAudio.duration - 3.0) {
         commentaryAudio.currentTime = 0;
         if (!commentaryAudio.paused) {
-            commentaryAudio.play().catch(() => {});
+            commentaryAudio.play().catch(() => { });
         }
     }
 });
 
 function playCommentaryAudio() {
     if (audioMuted) return;
-    commentaryAudio.play().catch(() => {});
+    commentaryAudio.play().catch(() => { });
 }
 
 function pauseCommentaryAudio() {
@@ -1136,7 +1136,7 @@ function playGantryBeep(freq = 540, duration = 0.22) {
         gain.connect(ctx.destination);
         osc.start();
         osc.stop(ctx.currentTime + duration);
-    } catch (e) {}
+    } catch (e) { }
 }
 
 // 2. Play Launch Chime (Lights Out!)
@@ -1157,7 +1157,7 @@ function playLaunchChime() {
             osc.start();
             osc.stop(ctx.currentTime + 0.6);
         });
-    } catch (e) {}
+    } catch (e) { }
 }
 
 // 3. Start Procedural F1 Engine Sound
@@ -1190,7 +1190,7 @@ function startEngineSound() {
 
         engineOsc1.start();
         engineOsc2.start();
-    } catch (e) {}
+    } catch (e) { }
 }
 
 // 4. Modulate Engine Sound dynamically based on race throttle
@@ -1199,7 +1199,7 @@ function modulateEngineSound(revRate = 1.0) {
     try {
         const targetFreq = 140 + revRate * 120 + Math.sin(Date.now() * 0.006) * 35;
         engineOsc1.frequency.setTargetAtTime(targetFreq, audioCtx.currentTime, 0.1);
-    } catch (e) {}
+    } catch (e) { }
 }
 
 // 5. Stop Procedural F1 Engine Sound
@@ -1208,13 +1208,13 @@ function stopEngineSound() {
         try {
             engineGain.gain.setTargetAtTime(0.0001, audioCtx.currentTime, 0.15);
             setTimeout(() => {
-                if (engineOsc1) { try { engineOsc1.stop(); } catch(e){} }
-                if (engineOsc2) { try { engineOsc2.stop(); } catch(e){} }
+                if (engineOsc1) { try { engineOsc1.stop(); } catch (e) { } }
+                if (engineOsc2) { try { engineOsc2.stop(); } catch (e) { } }
                 engineOsc1 = null;
                 engineOsc2 = null;
                 engineGain = null;
             }, 200);
-        } catch(e) {}
+        } catch (e) { }
     }
 }
 
@@ -1486,7 +1486,7 @@ function alignCarsOnGrid() {
     let totalPathLength = 0;
     try {
         if (raceTrackPath) totalPathLength = raceTrackPath.getTotalLength();
-    } catch(e) {}
+    } catch (e) { }
     if (totalPathLength <= 0) return;
 
     raceCars.forEach(car => {
@@ -1496,7 +1496,7 @@ function alignCarsOnGrid() {
             try {
                 const pt = raceTrackPath.getPointAtLength(trackDist);
                 car.bubbleEl.setAttribute('transform', `translate(${pt.x}, ${pt.y})`);
-            } catch(e) {}
+            } catch (e) { }
         }
     });
 }
@@ -1643,7 +1643,7 @@ function animateRace(timestamp) {
     let totalPathLength = 0;
     try {
         if (raceTrackPath) totalPathLength = raceTrackPath.getTotalLength();
-    } catch (e) {}
+    } catch (e) { }
 
     let maxDistance = -999;
     const TOTAL_SESSION_SECONDS = RACE_TOTAL_LAPS * RACE_LAP_SECONDS;
@@ -1749,7 +1749,7 @@ function animateRace(timestamp) {
                     car.bubbleEl.classList.remove('overtaking');
                     car.bubbleEl.classList.remove('drs_active');
                 }
-            } catch (err) {}
+            } catch (err) { }
         }
     });
 
@@ -2049,7 +2049,7 @@ if (podiumRaceAgainBtn) {
 
 // Synchronize circuit selection from Circuit Section
 const originalSelectCircuit = selectCircuit;
-selectCircuit = function(card, isInitial = false) {
+selectCircuit = function (card, isInitial = false) {
     originalSelectCircuit(card, isInitial);
     const circuitKey = card.dataset.circuit;
     if (circuitKey) {
