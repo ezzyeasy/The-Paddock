@@ -22,9 +22,10 @@
 
         <a href="#grid">GRID</a>
         <a href="#training">TRAINING</a>
-        <a href="#">GARAGE</a>
-        <a href="#">CIRCUIT</a>
-        <a href="#">RACE</a>
+        <a href="#garage">GARAGE</a>
+        <a href="#circuit">CIRCUIT</a>
+        <a href="#race">RACE</a>
+        <a href="#podium">PODIUM</a>
     </nav>
 
     <section class="hero" id="hero">
@@ -145,9 +146,20 @@
     </section>
 
     <section class="training" id="training">
+        <!-- DRIVERS ON BOTH SIDES -->
+        <div class="driver1">
+            <img src="Assets/Mercedes/George.webp" alt="George Russell" class="george">
+        </div>
+        <div class="driver2">
+            <img src="Assets/Mercedes/Kimi.webp" alt="Kimi Antonelli" class="kimi">
+        </div>
+
         <div class="training_container">
-            <div class="driver1">
-                <img src="Assets/Mercedes/George.webp" alt="George Russell" class="george">
+            <!-- TRAINING HEADER -->
+            <div class="training_header">
+                <span class="training_badge">PERFORMANCE METRICS &bull; DRIVER R&amp;D</span>
+                <h1>DRIVER <span class="training_title_highlight">TRAINING</span></h1>
+                <p>Allocate seasonal development budget to calibrate racecraft, qualifying pace, and tactical telemetry.</p>
             </div>
 
             <div class="stats">
@@ -256,12 +268,680 @@
                     </div>
                 </div>
             </div>
+        </div>
+    </section>
 
-            <div class="driver2">
-                <img src="Assets/Mercedes/Kimi.webp" alt="Kimi Antonelli" class="kimi">
+    <section class="divider"></section>
+
+    <!-- GARAGE SECTION -->
+    <section class="garage" id="garage">
+        <div class="garage_container">
+            <!-- GARAGE HEADER -->
+            <div class="garage_header">
+                <span class="garage_badge">PIT-WALL TELEMETRY &bull; SETUP DESK</span>
+                <h1>CAR <span class="garage_title_highlight">TUNING</span></h1>
+                <p>Calibrate aerodynamic downforce, mechanical differential, and tyre compounds for optimal telemetry.</p>
+
+                <!-- SETUP PRESETS -->
+                <div class="preset_selector">
+                    <button type="button" class="preset_btn" data-preset="low">
+                        <span class="preset_name">LOW DOWNFORCE</span>
+                        <span class="preset_sub">Monza / High Speed</span>
+                    </button>
+                    <button type="button" class="preset_btn active" data-preset="balanced">
+                        <span class="preset_name">BALANCED SETUP</span>
+                        <span class="preset_sub">Silverstone / Optimal</span>
+                    </button>
+                    <button type="button" class="preset_btn" data-preset="high">
+                        <span class="preset_name">HIGH DOWNFORCE</span>
+                        <span class="preset_sub">Monaco / Max Grip</span>
+                    </button>
+                </div>
+            </div>
+
+            <!-- GARAGE WORKSPACE (3-COLUMN PIT-WALL DESK) -->
+            <div class="garage_workspace">
+                <!-- COLUMN 1: TUNING CONTROLS -->
+                <div class="garage_card tuning_controls_card">
+                    <div class="card_header">
+                        <h2>MECHANICAL TUNING</h2>
+                        <span class="card_tag">CALIBRATION</span>
+                    </div>
+
+                    <!-- SLIDER: AERO BALANCE -->
+                    <div class="tuning_group">
+                        <div class="tuning_label_row">
+                            <span class="tuning_name">AERODYNAMICS</span>
+                            <span class="tuning_val" id="valAero">50%</span>
+                        </div>
+                        <input type="range" min="10" max="90" value="50" class="tuning_slider" id="sliderAero">
+                        <div class="slider_bounds">
+                            <span>Top Speed</span>
+                            <span>Downforce</span>
+                        </div>
+                    </div>
+
+                    <!-- SLIDER: DIFFERENTIAL -->
+                    <div class="tuning_group">
+                        <div class="tuning_label_row">
+                            <span class="tuning_name">DIFFERENTIAL (ON-THROTTLE)</span>
+                            <span class="tuning_val" id="valDiff">70%</span>
+                        </div>
+                        <input type="range" min="50" max="100" value="70" class="tuning_slider" id="sliderDiff">
+                        <div class="slider_bounds">
+                            <span>Rotation</span>
+                            <span>Traction</span>
+                        </div>
+                    </div>
+
+                    <!-- SLIDER: BRAKE BIAS -->
+                    <div class="tuning_group">
+                        <div class="tuning_label_row">
+                            <span class="tuning_name">BRAKE BIAS</span>
+                            <span class="tuning_val" id="valBrake">56% FRONT</span>
+                        </div>
+                        <input type="range" min="50" max="65" value="56" class="tuning_slider" id="sliderBrake">
+                        <div class="slider_bounds">
+                            <span>Rear Stable</span>
+                            <span>Front Bite</span>
+                        </div>
+                    </div>
+
+                    <!-- TYRE COMPOUND SELECTOR -->
+                    <div class="tuning_group">
+                        <div class="tuning_label_row">
+                            <span class="tuning_name">TYRE COMPOUND</span>
+                            <span class="tuning_val" id="valTyre">MEDIUM (C3)</span>
+                        </div>
+                        <div class="tyre_compound_row">
+                            <button type="button" class="tyre_btn tyre_soft" data-tyre="soft">
+                                <span class="tyre_dot"></span>
+                                <span class="tyre_code">SOFT</span>
+                            </button>
+                            <button type="button" class="tyre_btn tyre_medium active" data-tyre="medium">
+                                <span class="tyre_dot"></span>
+                                <span class="tyre_code">MEDIUM</span>
+                            </button>
+                            <button type="button" class="tyre_btn tyre_hard" data-tyre="hard">
+                                <span class="tyre_dot"></span>
+                                <span class="tyre_code">HARD</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- COLUMN 2: CENTER CAR & TELEMETRY PROFILE -->
+                <div class="garage_card car_telemetry_card">
+                    <div class="card_header">
+                        <h2 class="garage_car_name" id="garageCarName">MERCEDES-AMG F1 W16</h2>
+                        <span class="card_tag live_indicator">&bull; LIVE TELEMETRY</span>
+                    </div>
+
+                    <div class="car_preview_wrapper">
+                        <div class="car_scan_line"></div>
+                        <img src="Assets/Mercedes/Mercedes_Car.png" alt="Team Car" class="garage_car_img" id="garageCarImg">
+                        <div class="car_glow_spotlight"></div>
+                    </div>
+
+                    <div class="quick_telemetry_grid">
+                        <div class="telemetry_cell">
+                            <span class="telemetry_cell_label">EST. TOP SPEED</span>
+                            <span class="telemetry_cell_val" id="statTopSpeed">338 <small>KM/H</small></span>
+                        </div>
+                        <div class="telemetry_cell">
+                            <span class="telemetry_cell_label">DOWNFORCE</span>
+                            <span class="telemetry_cell_val" id="statDownforce">780 <small>KG</small></span>
+                        </div>
+                        <div class="telemetry_cell">
+                            <span class="telemetry_cell_label">LATERAL GRIP</span>
+                            <span class="telemetry_cell_val" id="statGrip">4.8 <small>G</small></span>
+                        </div>
+                        <div class="telemetry_cell">
+                            <span class="telemetry_cell_label">EST. TYRE LIFE</span>
+                            <span class="telemetry_cell_val" id="statTyreLife">26 <small>LAPS</small></span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- COLUMN 3: RADAR CHART & LOCK SETUP -->
+                <div class="garage_card performance_card">
+                    <div class="card_header">
+                        <h2>PERFORMANCE RADAR</h2>
+                        <span class="card_tag">DYNAMIC</span>
+                    </div>
+
+                    <!-- SVG RADAR CHART -->
+                    <div class="radar_container">
+                        <svg class="radar_svg" viewBox="0 0 200 200">
+                            <!-- Background Web -->
+                            <polygon points="100,20 180,100 100,180 20,100" class="radar_grid" />
+                            <polygon points="100,40 160,100 100,160 40,100" class="radar_grid" />
+                            <polygon points="100,60 140,100 100,140 60,100" class="radar_grid" />
+                            <line x1="100" y1="20" x2="100" y2="180" class="radar_axis" />
+                            <line x1="20" y1="100" x2="180" y2="100" class="radar_axis" />
+
+                            <!-- Active Data Polygon -->
+                            <polygon points="100,35 155,100 100,145 45,100" class="radar_poly" id="radarPolygon" />
+
+                            <!-- Axis Labels -->
+                            <text x="100" y="14" class="radar_label" text-anchor="middle">SPEED</text>
+                            <text x="190" y="104" class="radar_label" text-anchor="start">CORNERING</text>
+                            <text x="100" y="196" class="radar_label" text-anchor="middle">ACCEL</text>
+                            <text x="10" y="104" class="radar_label" text-anchor="end">TYRE LIFE</text>
+                        </svg>
+                    </div>
+
+                    <!-- THEORETICAL DELTA BADGE -->
+                    <div class="delta_box">
+                        <span class="delta_label">THEORETICAL LAP DELTA</span>
+                        <div class="delta_val_row">
+                            <span class="delta_num" id="deltaVal">-0.245s</span>
+                            <span class="delta_desc">vs baseline sim</span>
+                        </div>
+                    </div>
+
+                    <!-- LOCK SETUP BUTTON -->
+                    <a href="#circuit" class="garage_lock_btn" id="lockSetupBtn">
+                        CONFIRM SETUP // PROCEED &rarr;
+                    </a>
+                </div>
             </div>
         </div>
     </section>
+
+    <section class="divider"></section>
+
+    <!-- CIRCUIT SELECTION SECTION -->
+    <section class="circuit" id="circuit">
+        <!-- DUAL-LAYER BACKGROUND CROSSFADE -->
+        <div class="circuit_bg circuit_bg_active" style="background-image: url('Assets/Circuits/Sepang.jpg');"></div>
+        <div class="circuit_bg circuit_bg_next"></div>
+
+        <!-- DARK VIGNETTE & RADIAL OVERLAYS -->
+        <div class="circuit_vignette"></div>
+
+        <div class="circuit_container">
+            <!-- FLOATING GLOWING TRACK SVG OUTLINE (OFFICIAL USER SVG) -->
+            <div class="circuit_track_wrapper">
+                <img src="Assets/Global/Sepang_Circuit.svg" alt="Track Layout" class="circuit_track_img" id="circuitTrackImg">
+            </div>
+
+            <!-- HERO CENTER DETAILS -->
+            <div class="circuit_hero">
+                <h1 class="circuit_title" id="circuitTitle">SEPANG</h1>
+                <h2 class="circuit_subtitle" id="circuitSubtitle">SEPANG INTERNATIONAL CIRCUIT, MALAYSIA</h2>
+
+                <!-- LAP SELECTION ON MAP SECTION (3, 5, 7 LAPS) -->
+                <div class="circuit_lap_selector">
+                    <span class="circuit_lap_label">RACE DISTANCE</span>
+                    <div class="circuit_lap_btns">
+                        <button type="button" class="circuit_lap_btn" data-laps="3">3 LAPS</button>
+                        <button type="button" class="circuit_lap_btn active" data-laps="5">5 LAPS</button>
+                        <button type="button" class="circuit_lap_btn" data-laps="7">7 LAPS</button>
+                    </div>
+                </div>
+
+                <a href="#race" class="race_here_btn" id="raceHereBtn">RACE HERE</a>
+            </div>
+
+            <!-- BOTTOM CAROUSEL / SLIDER -->
+            <div class="circuit_carousel_wrapper">
+                <button type="button" class="carousel_arrow arrow_prev" id="prevCircuitBtn" aria-label="Previous Circuit">
+                    &#8592;
+                </button>
+
+                <div class="circuit_carousel_container" id="circuitCarouselContainer">
+                    <div class="circuit_carousel_track" id="circuitCarouselTrack">
+                        <!-- 1. MARINA BAY -->
+                        <div class="circuit_card" data-circuit="marina_bay">
+                            <div class="circuit_card_img" style="background-image: url('Assets/Circuits/Marina_Bay.jpg');"></div>
+                            <div class="circuit_card_overlay"></div>
+                            <div class="circuit_card_text">
+                                <h3>MARINA BAY</h3>
+                                <p>MARINA BAY STREET CIRCUIT, SINGAPORE</p>
+                            </div>
+                        </div>
+
+                        <!-- 2. BAKU -->
+                        <div class="circuit_card" data-circuit="baku">
+                            <div class="circuit_card_img" style="background-image: url('Assets/Circuits/Baku.jpg');"></div>
+                            <div class="circuit_card_overlay"></div>
+                            <div class="circuit_card_text">
+                                <h3>BAKU</h3>
+                                <p>BAKU CITY CIRCUIT, AZERBAIJAN</p>
+                            </div>
+                        </div>
+
+                        <!-- 3. MONZA -->
+                        <div class="circuit_card" data-circuit="monza">
+                            <div class="circuit_card_img" style="background-image: url('Assets/Circuits/Monza.jpg');"></div>
+                            <div class="circuit_card_overlay"></div>
+                            <div class="circuit_card_text">
+                                <h3>MONZA</h3>
+                                <p>AUTODROMO NAZIONALE MONZA, ITALY</p>
+                            </div>
+                        </div>
+
+                        <!-- 4. MONACO (SWAPPED FROM ZANDVOORT) -->
+                        <div class="circuit_card" data-circuit="monaco">
+                            <div class="circuit_card_img" style="background-image: url('Assets/Circuits/Monaco.jpg');"></div>
+                            <div class="circuit_card_overlay"></div>
+                            <div class="circuit_card_text">
+                                <h3>MONACO</h3>
+                                <p>CIRCUIT DE MONACO, MONTE CARLO</p>
+                            </div>
+                        </div>
+
+                        <!-- 5. HUNGARORING -->
+                        <div class="circuit_card" data-circuit="hungaroring">
+                            <div class="circuit_card_img" style="background-image: url('Assets/Circuits/Hungaroring.jpg');"></div>
+                            <div class="circuit_card_overlay"></div>
+                            <div class="circuit_card_text">
+                                <h3>HUNGARORING</h3>
+                                <p>HUNGARORING CIRCUIT, HUNGARY</p>
+                            </div>
+                        </div>
+
+                        <!-- 6. BAHRAIN (NEW CIRCUIT) -->
+                        <div class="circuit_card" data-circuit="bahrain">
+                            <div class="circuit_card_img" style="background-image: url('Assets/Circuits/Bahrain.jpg');"></div>
+                            <div class="circuit_card_overlay"></div>
+                            <div class="circuit_card_text">
+                                <h3>BAHRAIN</h3>
+                                <p>BAHRAIN INTERNATIONAL CIRCUIT, SAKHIR</p>
+                            </div>
+                        </div>
+
+                        <!-- 7. SEPANG (DEFAULT SELECTED IN FIGMA) -->
+                        <div class="circuit_card active" data-circuit="sepang">
+                            <div class="circuit_card_img" style="background-image: url('Assets/Circuits/Sepang.jpg');"></div>
+                            <div class="circuit_card_overlay"></div>
+                            <div class="circuit_card_text">
+                                <h3>SEPANG</h3>
+                                <p>SEPANG INTERNATIONAL CIRCUIT, MALAYSIA</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <button type="button" class="carousel_arrow arrow_next" id="nextCircuitBtn" aria-label="Next Circuit">
+                    &#8594;
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <section class="divider"></section>
+
+    <!-- RACE SIMULATION SECTION -->
+    <section class="race" id="race">
+        <!-- BACKGROUND DUAL LAYER FOR CIRCUIT BACKDROP -->
+        <div class="race_bg" id="raceBg" style="background-image: url('Assets/Circuits/Sepang.jpg');"></div>
+        <div class="race_vignette"></div>
+
+        <div class="race_container">
+            <!-- TOP CONTROLS BAR -->
+            <div class="race_top_bar">
+                <div class="race_status_pill">
+                    <span class="live_dot" id="raceLiveDot"></span>
+                    <span id="raceStatusText">GRID FORMATION // READY TO START</span>
+                </div>
+
+                <div class="race_controls">
+                    <button type="button" class="race_ctrl_btn race_start_launch_btn" id="racePlayPauseBtn" aria-label="Start / Pause Race">
+                        <span id="racePlayIcon">&#9654;</span>
+                        <span id="racePlayText">START RACE</span>
+                    </button>
+                    <div class="speed_btn_group">
+                        <button type="button" class="speed_btn active" data-speed="1">1x</button>
+                        <button type="button" class="speed_btn" data-speed="2">2x</button>
+                        <button type="button" class="speed_btn" data-speed="5">5x</button>
+                        <button type="button" class="speed_btn" data-speed="10">10x</button>
+                    </div>
+
+                    <!-- AUDIO COMMENTARY TOGGLE (BESIDE SPEED BUTTONS) -->
+                    <button type="button" class="audio_toggle_btn" id="raceAudioBtn" aria-label="Toggle Race Sound">
+                        <span id="audioIcon">🔊</span>
+                        <span id="audioText">SOUND ON</span>
+                    </button>
+
+                    <button type="button" class="race_ctrl_btn race_restart_btn" id="raceRestartBtn">
+                        &#8635; RESTART
+                    </button>
+                </div>
+            </div>
+
+            <!-- MAIN STAGE -->
+            <div class="race_stage">
+                <!-- F1 START LIGHTS GANTRY OVERLAY -->
+                <div class="race_gantry_overlay" id="raceGantryOverlay">
+                    <div class="gantry_box">
+                        <span class="gantry_label">FIA START LIGHTS SYSTEM</span>
+                        <div class="gantry_lights">
+                            <div class="gantry_col"><div class="gantry_pod" id="light1"></div></div>
+                            <div class="gantry_col"><div class="gantry_pod" id="light2"></div></div>
+                            <div class="gantry_col"><div class="gantry_pod" id="light3"></div></div>
+                            <div class="gantry_col"><div class="gantry_pod" id="light4"></div></div>
+                            <div class="gantry_col"><div class="gantry_pod" id="light5"></div></div>
+                        </div>
+                        <div class="gantry_status" id="gantryStatus">PRESS START TO INITIATE 5-RED-LIGHT COUNTDOWN</div>
+                        <button type="button" class="gantry_launch_btn" id="gantryLaunchBtn">
+                            START RACE // LIGHTS SEQUENCE
+                        </button>
+                    </div>
+                </div>
+
+                <!-- LEFT COLUMN: LIVE TIMING TOWER -->
+                <aside class="race_timing_tower">
+                    <div class="tower_header">
+                        <div class="tower_f1_badge">
+                            <img src="Assets/Global/F1.svg" alt="F1" class="tower_f1_logo">
+                            <span class="tower_race_title">RACE</span>
+                        </div>
+                        <div class="tower_lap_counter">
+                            <span class="lap_label">LAP</span>
+                            <span class="lap_current" id="raceLapCurrent">1</span>
+                            <span class="lap_sep">/</span>
+                            <span class="lap_total" id="raceLapTotal">5</span>
+                        </div>
+                    </div>
+                    <div class="tower_sub_bar">
+                        <span class="tower_col_pos">POS</span>
+                        <span class="tower_col_driver">DRIVER</span>
+                        <span class="tower_col_gap">GAP/INTERVAL</span>
+                        <span class="tower_col_tyre">TYRE</span>
+                    </div>
+                    <div class="tower_list" id="raceTowerList">
+                        <!-- Populated dynamically with 20 driver rows -->
+                    </div>
+                </aside>
+
+                <!-- CENTER: TRACK SVG CANVAS -->
+                <div class="race_track_container" id="raceTrackContainer">
+                    <svg id="raceTrackSvg" class="race_track_svg" viewBox="0 0 749.19068 614.31634">
+                        <defs>
+                            <filter id="trackGlow" x="-20%" y="-20%" width="140%" height="140%">
+                                <feGaussianBlur stdDeviation="8" result="blur" />
+                                <feMerge>
+                                    <feMergeNode in="blur" />
+                                    <feMergeNode in="SourceGraphic" />
+                                </feMerge>
+                            </filter>
+                        </defs>
+                        <!-- Glow outline under track -->
+                        <path id="raceTrackGlowPath" class="race_track_glow_path" d="" />
+                        <!-- Main thick track path -->
+                        <path id="raceTrackPath" class="race_track_path" d="" />
+                        <!-- Start / Finish Line -->
+                        <line id="raceFinishLine" class="race_finish_line" x1="0" y1="0" x2="0" y2="0" />
+                        <!-- Moving Driver Bubbles -->
+                        <g id="raceBubblesGroup" class="race_bubbles_group"></g>
+                    </svg>
+                </div>
+
+                <!-- TOP RIGHT: LIVE COMMENTARY / INCIDENTS FEED -->
+                <div class="race_commentary_box" id="raceCommentaryBox">
+                    <div class="commentary_feed" id="commentaryFeed">
+                        <!-- Populated dynamically with live events -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="divider"></section>
+
+    <!-- DEDICATED PODIUM & USER FINAL TELEMETRY SECTION -->
+    <section class="podium" id="podium">
+        <div class="podium_bg" id="podiumBg"></div>
+        <div class="podium_vignette"></div>
+
+        <div class="podium_container">
+            <div class="podium_header_main">
+                <span class="podium_tag">OFFICIAL FIA FORMULA 1 GRAND PRIX RESULTS</span>
+                <h1 class="podium_main_title">CHAMPIONSHIP PODIUM</h1>
+                <p class="podium_circuit_info" id="podiumCircuitInfo">SEPANG INTERNATIONAL CIRCUIT // 5 LAPS COMPLETED</p>
+            </div>
+
+            <!-- LOCKED / EMPTY STANDBY STATE (BEFORE RACE FINISH) -->
+            <div class="podium_locked_state" id="podiumLockedState">
+                <div class="podium_locked_card">
+                    <div class="locked_trophy_glow">&#127942;</div>
+                    <h2 class="locked_title">PODIUM CEREMONY PENDING</h2>
+                    <p class="locked_desc">
+                        The championship podium and post-race telemetry debrief will unlock once the chequered flag is waved. Complete the Grand Prix simulation above to reveal the winners and your team's official points!
+                    </p>
+                    <a href="#race" class="podium_go_race_btn">GO TO LIVE RACE &uarr;</a>
+                </div>
+            </div>
+
+            <!-- ACTIVE PODIUM STAGE & USER FINAL TELEMETRY (POPULATED AFTER RACE FINISH) -->
+            <div class="podium_content" id="podiumContent" style="display: none;">
+                <!-- 3-STEP PODIUM STAGE -->
+                <div class="podium_stage">
+                <!-- P2 (Silver, Left) -->
+                <div class="podium_col podium_p2" id="podiumP2">
+                    <div class="podium_driver_avatar">
+                        <img src="Assets/Mercedes/Kimi.webp" alt="P2 Driver" id="p2DriverImg">
+                        <span class="podium_medal">2</span>
+                    </div>
+                    <div class="podium_driver_name" id="p2DriverName">KIMI ANTONELLI</div>
+                    <div class="podium_driver_team" id="p2DriverTeam">MERCEDES</div>
+                    <div class="podium_step step_2">
+                        <span class="step_num">2ND</span>
+                        <span class="step_points">+18 PTS</span>
+                    </div>
+                </div>
+
+                <!-- P1 (Gold, Center, Tallest) -->
+                <div class="podium_col podium_p1" id="podiumP1">
+                    <div class="podium_crown">&#127942;</div>
+                    <div class="podium_driver_avatar">
+                        <img src="Assets/Mercedes/George.webp" alt="P1 Driver" id="p1DriverImg">
+                        <span class="podium_medal">1</span>
+                    </div>
+                    <div class="podium_driver_name" id="p1DriverName">GEORGE RUSSELL</div>
+                    <div class="podium_driver_team" id="p1DriverTeam">MERCEDES</div>
+                    <div class="podium_step step_1">
+                        <span class="step_num">WINNER</span>
+                        <span class="step_points">+25 PTS</span>
+                    </div>
+                </div>
+
+                <!-- P3 (Bronze, Right) -->
+                <div class="podium_col podium_p3" id="podiumP3">
+                    <div class="podium_driver_avatar">
+                        <img src="Assets/Ferrari/Charles.webp" alt="P3 Driver" id="p3DriverImg">
+                        <span class="podium_medal">3</span>
+                    </div>
+                    <div class="podium_driver_name" id="p3DriverName">CHARLES LECLERC</div>
+                    <div class="podium_driver_team" id="p3DriverTeam">FERRARI</div>
+                    <div class="podium_step step_3">
+                        <span class="step_num">3RD</span>
+                        <span class="step_points">+15 PTS</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- USER FINAL SELECTED TELEMETRY & STATS REPORT -->
+            <div class="podium_user_report">
+                <div class="report_header">
+                    <span class="report_badge">POST-RACE DEBRIEF</span>
+                    <h2 class="report_title" id="reportTeamTitle">MERCEDES-AMG // FINAL PERFORMANCE REPORT</h2>
+                </div>
+
+                <div class="report_grid">
+                    <!-- DRIVER TRAINING METRICS -->
+                    <div class="report_card">
+                        <div class="report_card_header">
+                            <span class="card_icon">⚡</span>
+                            <h3>DRIVER TRAINING ATTRIBUTES</h3>
+                        </div>
+                        <div class="metrics_list" id="reportDriverMetrics">
+                            <div class="metric_row">
+                                <span class="metric_name">REACTIONS</span>
+                                <div class="metric_bar_track"><div class="metric_bar_fill" id="metricReactions" style="width: 82%;"></div></div>
+                                <span class="metric_val" id="metricReactionsVal">82</span>
+                            </div>
+                            <div class="metric_row">
+                                <span class="metric_name">PACE & BRAKING</span>
+                                <div class="metric_bar_track"><div class="metric_bar_fill" id="metricPace" style="width: 86%;"></div></div>
+                                <span class="metric_val" id="metricPaceVal">86</span>
+                            </div>
+                            <div class="metric_row">
+                                <span class="metric_name">STAMINA & CORNERING</span>
+                                <div class="metric_bar_track"><div class="metric_bar_fill" id="metricStamina" style="width: 88%;"></div></div>
+                                <span class="metric_val" id="metricStaminaVal">88</span>
+                            </div>
+                            <div class="metric_row">
+                                <span class="metric_name">FOCUS & TYRE MGMT</span>
+                                <div class="metric_bar_track"><div class="metric_bar_fill" id="metricFocus" style="width: 80%;"></div></div>
+                                <span class="metric_val" id="metricFocusVal">80</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- GARAGE CAR SETUP STATS -->
+                    <div class="report_card">
+                        <div class="report_card_header">
+                            <span class="card_icon">🔧</span>
+                            <h3>GARAGE CAR CONFIGURATION</h3>
+                        </div>
+                        <div class="setup_specs_list" id="reportSetupSpecs">
+                            <div class="spec_item">
+                                <span class="spec_label">DOWNFORCE (AERO WINGS)</span>
+                                <span class="spec_val" id="reportDownforce">7 / 10</span>
+                            </div>
+                            <div class="spec_item">
+                                <span class="spec_label">SUSPENSION STIFFNESS</span>
+                                <span class="spec_val" id="reportSuspension">6 / 10</span>
+                            </div>
+                            <div class="spec_item">
+                                <span class="spec_label">GEAR RATIO CALIBRATION</span>
+                                <span class="spec_val" id="reportGears">8 / 10</span>
+                            </div>
+                            <div class="spec_item">
+                                <span class="spec_label">TYRE COMPOUND</span>
+                                <span class="spec_val" id="reportTyre">MEDIUM (P-ZERO YELLOW)</span>
+                            </div>
+                            <div class="spec_item highlight_delta">
+                                <span class="spec_label">THEORETICAL LAP DELTA</span>
+                                <span class="spec_val delta_glow" id="reportDelta">-0.245s</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- CHAMPIONSHIP POINTS -->
+                    <div class="report_card points_card">
+                        <div class="report_card_header">
+                            <span class="card_icon">🏆</span>
+                            <h3>TEAM POINTS REWARD</h3>
+                        </div>
+                        <div class="points_award_box">
+                            <span class="points_large" id="reportPointsEarned">+43</span>
+                            <span class="points_label">CONSTRUCTOR PTS GAINED</span>
+                            <div class="user_driver_finish_row" id="reportDriverFinishes">
+                                <span class="finish_pill p1">DRIVER 1: P1 (+25 PTS)</span>
+                                <span class="finish_pill p2">DRIVER 2: P2 (+18 PTS)</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ACTIONS -->
+                <div class="podium_actions">
+                    <button type="button" class="podium_btn_primary" id="podiumRaceAgainBtn">RACE AGAIN</button>
+                    <a href="#circuit" class="podium_btn_secondary" id="podiumChangeTrackBtn">CHANGE CIRCUIT</a>
+                    <a href="#garage" class="podium_btn_secondary">GARAGE SETUP</a>
+                    <a href="#grid" class="podium_btn_secondary">SWITCH TEAM</a>
+                </div>
+            </div>
+            <!-- END PODIUM CONTENT -->
+            </div>
+        </div>
+    </section>
+
+    <!-- CINEMATIC EDITORIAL FOOTER (FIGMA REFERENCE LAYOUT WITH DYNAMIC ANIMATIONS) -->
+    <footer class="cinematic_footer" id="footer">
+        <div class="footer_bg" style="background-image: url('Assets/Global/Footer.png');"></div>
+        <div class="footer_overlay"></div>
+        <div class="footer_vignette"></div>
+
+        <!-- DYNAMIC CINEMATIC SPARK, EMBER & TITANIUM SKID PARTICLES OVER NIGHT RACE CAR -->
+        <div class="footer_sparks_container" aria-hidden="true">
+            <span class="spark s1"></span>
+            <span class="spark s2"></span>
+            <span class="spark s3"></span>
+            <span class="spark s4"></span>
+            <span class="spark s5"></span>
+            <span class="spark s6"></span>
+            <span class="spark s7"></span>
+            <span class="spark s8"></span>
+            <span class="spark s9"></span>
+            <span class="spark s10"></span>
+            <span class="spark s11"></span>
+            <span class="spark s12"></span>
+            <span class="spark s13"></span>
+            <span class="spark s14"></span>
+            <span class="spark s15"></span>
+            <span class="spark s16"></span>
+            <span class="spark s17"></span>
+            <span class="spark s18"></span>
+            <span class="spark s19"></span>
+            <span class="spark s20"></span>
+            <span class="spark s21"></span>
+            <span class="spark s22"></span>
+            <span class="spark s23"></span>
+            <span class="spark s24"></span>
+            <div class="skid_block_flash"></div>
+            <div class="brake_heat_glow"></div>
+            <div class="light_trail_glow"></div>
+        </div>
+
+        <div class="footer_container">
+            <div class="footer_content_wrap">
+                <!-- TOP-LEFT CONTENT BLOCK: EXACTLY MATCHING USER FIGMA LAYOUT -->
+                <div class="footer_left_pane">
+                    <!-- HEADER: F1 LOGO + TITLE + SEASON ARCHITECTURE -->
+                    <div class="footer_brand_block">
+                        <img src="Assets/Global/F1.svg" alt="F1 Logo" class="footer_f1_mark">
+                        <div class="footer_title_wrap">
+                            <h2 class="footer_main_heading">THE PADDOCK // VIP EXPERIENCE</h2>
+                            <span class="footer_sub_heading">SEASON 2026 ARCHITECTURE</span>
+                        </div>
+                    </div>
+
+                    <!-- INDEX LIST (01-06) -->
+                    <div class="footer_index_block">
+                        <span class="footer_index_label">INDEX</span>
+                        <ul class="footer_index_nav">
+                            <li><a href="#grid"><span class="idx_num">01</span><span class="idx_name">GRID</span></a></li>
+                            <li><a href="#training"><span class="idx_num">02</span><span class="idx_name">TRAINING</span></a></li>
+                            <li><a href="#garage"><span class="idx_num">03</span><span class="idx_name">GARAGE</span></a></li>
+                            <li><a href="#circuit"><span class="idx_num">04</span><span class="idx_name">CIRCUIT</span></a></li>
+                            <li><a href="#race"><span class="idx_num">05</span><span class="idx_name">RACE</span></a></li>
+                            <li><a href="#podium"><span class="idx_num">06</span><span class="idx_name">PODIUM</span></a></li>
+                        </ul>
+                    </div>
+
+                    <!-- DIVIDER & FULL COPYRIGHT SENTENCE / RETURN BUTTON -->
+                    <div class="footer_legal_block">
+                        <div class="footer_rule"></div>
+                        <div class="footer_bottom_row">
+                            <div class="footer_reserved_wrap">
+                                <span class="footer_reserved">&copy; 2026 THE PADDOCK // VIP EXPERIENCE. ALL RIGHTS RESERVED.</span>
+                                <span class="footer_reserved_sub">FIA FORMULA ONE WORLD CHAMPIONSHIP. OFFICIAL LICENSED HOSPITALITY ARCHITECTURE.</span>
+                            </div>
+                            <button type="button" class="footer_back_top_btn" id="backToTopBtn" aria-label="Return to top">
+                                <span>BACK TO TOP</span>
+                                <span class="arrow">&uarr;</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
 
     <script src="script.js"></script>
 </body>
